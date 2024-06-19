@@ -27,7 +27,7 @@ def main():
         active_drivers = fetch_active_drivers(login, password)
 
         inns = sorted(list(set(active_drivers['INN'].values)))
-        inns = [i for i in inns if re.match('\d{11}', i)][:7]
+        inns = [i for i in inns if re.match('\d{11}', i)]
         check_date = datetime.now(pytz.timezone('Europe/Moscow')).strftime('%Y-%m-%d')
         check_list = check_selfemployment_status(inns, check_date)
         checkout = pd.DataFrame(check_list)
