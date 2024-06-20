@@ -26,8 +26,8 @@ def fetch_active_drivers(login, password):
         active_drivers[['MetaId', 'DefaultID', 'ID', 'FIO', 'SNILS',
                         'INN','OGRN', 'KIS_ART_DriverId',
                         'CarDepartment']]\
-                      .sort_values(by=['CarDepartment', 'FIO'],
-                                   ascending=[True, True])
+            .fillna('')\
+            .sort_values(by=['CarDepartment', 'FIO'], ascending=[True, True])
     return active_drivers
 
 

@@ -33,7 +33,6 @@ def main():
         checkout = pd.DataFrame(check_list)
 
         merged_roster = pd.merge(active_drivers, checkout, on='INN', how='left')
-        merged_roster = merged_roster.fillna('')
         merged_roster['check_date'] = datetime.now(pytz.timezone('Europe/Moscow'))\
             .strftime('%d.%m.%Y %H:%M:%S')
 
