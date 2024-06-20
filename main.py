@@ -32,7 +32,7 @@ def main():
         check_list = check_selfemployment_status(inns, check_date)
         checkout = pd.DataFrame(check_list)
 
-        merged_roster = pd.merge(active_drivers, checkout, on='INN', how='left')
+        merged_roster = pd.merge(active_drivers, checkout, on='INN', how='left').fillna('')
         merged_roster['check_date'] = datetime.now(pytz.timezone('Europe/Moscow'))\
             .strftime('%d.%m.%Y %H:%M:%S')
 
