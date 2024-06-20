@@ -61,6 +61,8 @@ def check_selfemployment_status(inns: list, date: str) -> dict:
 
         if response.status_code != 200:
             code, message = result.values()
+            if 'Указан некорректный ИНН' in message:
+                message = 'Некорректный ИНН'
             check_result.append(
                 {
                     'INN': inn,
