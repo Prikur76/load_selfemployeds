@@ -63,6 +63,8 @@ def check_selfemployment_status(inns: list, date: str) -> dict:
             code, message = result.values()
             if 'Указан некорректный ИНН' in message:
                 message = 'Некорректный ИНН'
+            if 'Превышено количество запросов к сервису' in message:
+                message = 'Слишком много запросов'
             check_result.append(
                 {
                     'INN': inn,
@@ -70,5 +72,5 @@ def check_selfemployment_status(inns: list, date: str) -> dict:
                     'message': message
                 }
             )
-        time.sleep(30)
+        time.sleep(30.5)
     return check_result
