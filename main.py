@@ -32,7 +32,9 @@ def main():
         check_list = check_selfemployment_status(inns, check_date)
         checkout = pd.DataFrame(check_list)
 
-        merged_roster = pd.merge(active_drivers, checkout, on='INN', how='left').fillna('')
+        merged_roster = pd.merge(active_drivers, checkout, on='INN', how='left')
+        merged_roster['check_status'] = merged_roster['check_status'].fillna(value='')
+        merged_roster['message'] = merged_roster['message'].fillna(value='нет данных')
         merged_roster['check_date'] = datetime.now(pytz.timezone('Europe/Moscow'))\
             .strftime('%d.%m.%Y %H:%M:%S')
 
@@ -60,4 +62,4 @@ def main():
 if __name__ == '__main__':
     while True:
         main()
-        time.sleep(3600)
+        time.sleep(1800)
