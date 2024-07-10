@@ -72,5 +72,5 @@ def check_selfemployment_status(inns: list, date: str) -> dict:
                     'message': message
                 }
             )
-        time.sleep(30.5)
+        time.sleep(31)
     return check_result
