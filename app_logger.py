@@ -1,12 +1,13 @@
 import logging
 
-# создаем форматтер
+
+# создаем форматтер для отладочных сообщений
 _log_format = f'%(asctime)s - [%(levelname)s] - %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s'
 
 
 def get_file_handler():
     """создаем файловый обработчик, который регистрирует отладочные сообщения"""
-    file_handler = logging.FileHandler('errors.log')
+    file_handler = logging.FileHandler('errors.log', encoding='utf-8')
     file_handler.setLevel(logging.WARNING)
     file_handler.setFormatter(logging.Formatter(_log_format))
     return file_handler
@@ -27,4 +28,3 @@ def get_logger(name):
     logger.addHandler(get_file_handler())
     logger.addHandler(get_stream_handler())
     return logger
-
