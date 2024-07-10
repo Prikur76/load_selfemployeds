@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import logging
+
 import re
 import time
 from datetime import datetime
@@ -12,15 +12,13 @@ from googleapiclient.errors import HttpError
 import settings as st
 import spreadsheets as ss
 from statusnpd_api import fetch_active_drivers, check_selfemployment_status
+from app_logger import get_logger
 
-logger = logging.getLogger(__name__)
+
+logger = get_logger(__name__)
 
 
 def main():
-    logging.basicConfig(
-        format='[%(levelname)s] - %(asctime)s - %(name)s - %(message)s',
-        level=logging.INFO
-    )
     try:
         login = st.ELEMENT_USER
         password = st.ELEMENT_PASSWORD
