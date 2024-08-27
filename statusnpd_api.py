@@ -8,7 +8,7 @@ def fetch_active_drivers(login, password):
     '''
     Возвращает список работающих водителей 1с:Элемент
     '''
-    url = 'https://taxi.0nalog.com:1711/Transavto/hs/Driver/v1/Get'
+    url = 'https://1c.0nalog.com:1710/Transavto/hs/Driver/v1/Get'
     auth = (login, password)
     payload = {
         'Status': 'Работает'
